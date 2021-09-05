@@ -3,7 +3,7 @@ import axios from "axios";
 import {useParams, useHistory} from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import Actors from "../../components/Actors";
-import {Langs} from "../../components/Langs";
+
 const FilmsInfo = () => {
     const params = useParams()
     const [isLoading, setIsLoading] = useState(true)
@@ -57,10 +57,6 @@ const FilmsInfo = () => {
                     )
                 }
                 <h4>Язык</h4>
-                {/*{*/}
-                {/*    film.original_language === Object.keys(Langs).includes() &&*/}
-                {/*        <span>{Object.values(Langs)[film.original_language]}</span>*/}
-                {/*}*/}
             </div>
             <Actors actors={actors}/>
             <div>
