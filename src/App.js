@@ -7,20 +7,16 @@ import Header from "./components/Header";
 
 
 function App() {
-  return (
-      <>
-          <Router><Header /></Router>
-          <div className="container my-5">
-              <Router>
-                  <Route exact path="/"><Films /></Route>
-                  <Route path="/film/:id"><FilmsInfo /></Route>
-                  <Route path="/actor/:id"><ActorInfo /></Route>
-                  <Route path="/cast/:id"><FilmsCast /></Route>
-              </Router>
-          </div>
-      </>
-
-  );
+    return (
+            <Router>
+                <Header/>
+                <div className="container my-5"><Route exact path="/"><Films/></Route>
+                    <Route path="/film/:id"><FilmsInfo/></Route>
+                    <Route path="/actor/:id"><ActorInfo/></Route>
+                    <Route path="/cast/:id"><FilmsCast/></Route>
+                </div>
+            </Router>
+    );
 }
 
 export default App;
