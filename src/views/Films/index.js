@@ -23,8 +23,8 @@ const Films = () => {
             <div className="row my-4">
                 {
                     films.map(film =>
-                        <div className="col-md-3 col-sm-6 mb-3">
-                            <Link to={`/film/${film.id}`} key={film.id} >
+                        <div key={film.id} className="col-md-3 col-sm-6 mb-3">
+                            <Link to={`/film/${film.id}`} >
                                 <img src={`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${film.poster_path}`} alt={film.title} />
                                 <h5>{film.original_title}</h5>
                             </Link>

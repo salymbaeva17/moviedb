@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useParams, Link} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Spinner from "../../components/Spinner";
 
 const ActorInfo = () => {
@@ -27,15 +27,12 @@ const ActorInfo = () => {
                 <span>Дата рождения {actor.birthday?.split("-").reverse().join("/")}</span>
                 <p>Место рождения {actor.place_of_birth}</p>
                 <p>Пол {actor.gender === 1 ? "Женский" : actor.gender === 2 ? "Мужской" : "Неизвестно"}</p>
-                <p>Также известность как {actor.also_known_as?.map(el =>
-                    <span className="mx-2">{el}</span>)
+                <p>Также известность как {actor.also_known_as?.map((el, idx) =>
+                    <span className="mx-2" key={idx}>{el}</span>)
                 }
                 </p>
                 <p>Биография<br/>{actor.biography}</p>
                 <p>Известность за {actor.known_for_department}</p>
-                {
-                    actor.homepage !== null && <Link src={actor.homepage}>Learn more about...</Link>
-                }
             </div>
         </div>
     );
