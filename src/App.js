@@ -8,14 +8,17 @@ import Header from "./components/Header";
 
 function App() {
     return (
-            <Router>
-                <Header/>
-                <div className="container my-5"><Route exact path="/"><Films/></Route>
-                    <Route path="/film/:id"><FilmsInfo/></Route>
-                    <Route path="/actor/:id"><ActorInfo/></Route>
-                    <Route path="/cast/:id"><FilmsCast/></Route>
-                </div>
-            </Router>
+        <Router>
+            <Header/>
+
+            <Route path="/film/:id"><FilmsInfo/></Route>
+            <div className="container my-5">
+                <Route exact path="/"><Films/></Route>
+                <Route path="/actor/:id"><ActorInfo/></Route>
+                <Route path="/cast/:id"><FilmsCast/></Route>
+            </div>
+
+        </Router>
     );
 }
 

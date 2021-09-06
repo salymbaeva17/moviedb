@@ -1,21 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
-import {useParams} from "react-router-dom";
+import React, {useState} from 'react';
+import ModalVideo from 'react-modal-video'
 
-const FilmsTrailer = () => {
-    const params = useParams()
-    const [trailer, setTrailer] = useState()
-    useEffect(() => {
-        axios(`https://api.themoviedb.org/3/movie/${params.id}/videos?language=ru&sort_by=popularity.desc&api_key=8bd09535ee32769ac84638efb6c3cfe5`)
-            .then(({data}) => {
-                setTrailer(data.results)
-            })
-    }, [params.id])
-    console.log(trailer)
+const FilmsTrailer = ({id}) => {
+    const [isOpen, setOpen] = useState(false)
+
     return (
-        <div>
-
-        </div>
+        <span>
+            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={id}
+                        onClose={() => setOpen(false)}/>
+            <button className="btn-primary" onClick={() => setOpen(true)}>video</button>
+        </span>
     );
 };
 

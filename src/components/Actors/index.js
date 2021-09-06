@@ -24,7 +24,7 @@ const Actors = ({setActorsLoading}) => {
     return (
         <>
             <h3>В главных ролях</h3>
-            <OwlCarousel className='owl-theme mt-3' loop margin={10} dots={false}>
+            <OwlCarousel className='owl-theme mt-3' items={7} loop={0} margin={10} dots={false}>
                 {
                     actors.slice(0, 7).map(actor =>
                         <div key={actor.id}>
@@ -35,27 +35,23 @@ const Actors = ({setActorsLoading}) => {
                                             <img
                                                 src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg"
                                                 alt={actor.character}/>
-                                            <h5>{actor.name}</h5>
-                                            <span>{actor.character}</span>
+                                            <span>{actor.character.split(" ").slice(0,2)}</span>
                                         </>
                                         :
                                         <>
                                             <img
                                                 src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
                                                 alt={actor.character}/>
-                                            <h5>{actor.name}</h5>
-                                            <span>{actor.character}</span>
+                                            <span>{actor.character.split(" ").slice(0,2)}</span>
                                         </> :
                                     <>
                                         <img
                                             src={`https://www.themoviedb.org/t/p/w276_and_h350_face${actor.profile_path}`}
-                                            alt={actor.character}/>
-                                        <h5>{actor.name}</h5>
+                                            alt={actor.character.split(" ").slice(0,2)}/>
                                         <span>{actor.character}</span>
                                     </>
                                 }
                             </Link>
-
                         </div>
                     )
                 }

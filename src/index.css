@@ -1,67 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 2 | @import 'node_modules/react-modal-video/scss/modal-video.scss';
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   index.scss 2:9  root stylesheet */
 
-body {
-  font-family: "Source Sans Pro", "Arial", sans-serif;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import 'node_modules/react-modal-video/scss/modal-video.scss';\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   index.scss 2:9  root stylesheet";
 }
-
-img {
-  width: 100%;
-}
-
-.page__btn-primary {
-  background-color: #032541;
-  border: #032541;
-  color: white;
-}
-.page__btn-info {
-  background-color: #2ebbd3;
-  border-color: #2ebbd3;
-}
-
-.header {
-  background-color: #032541;
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-.header__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header__link {
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 0.5rem;
-  font-size: 16px;
-}
-.header__left-side {
-  display: flex;
-  align-items: center;
-}
-.header__left-side svg {
-  width: 160px;
-  height: 40px;
-}
-.header__right-side i {
-  color: white;
-  font-size: 20px;
-}
-.header__right-side i:not(first-child) {
-  margin-left: 20px;
-}
-.header__svg {
-  width: 30px;
-  height: 30px;
-}
-.header__navbar * {
-  margin-left: 20px;
-}
-
-/*# sourceMappingURL=index.css.map */
