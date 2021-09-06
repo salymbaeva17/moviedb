@@ -13,6 +13,16 @@ img {
   width: 100%;
 }
 
+.page__btn-primary {
+  background-color: #032541;
+  border: #032541;
+  color: white;
+}
+.page__btn-info {
+  background-color: #2ebbd3;
+  border-color: #2ebbd3;
+}
+
 .header {
   background-color: #032541;
   height: 80px;

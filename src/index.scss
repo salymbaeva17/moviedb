@@ -11,9 +11,19 @@ body{
 img {
   width: 100%;
 }
-
+.page {
+  &__btn-primary {
+    background-color: #032541;
+    border: #032541;
+    color: white;
+  }
+  &__btn-info{
+    background-color: #2ebbd3;
+    border-color: #2ebbd3;
+  }
+}
 .header{
-  background-color: rgba(3, 37, 65, 1);
+  background-color: rgb(3, 37, 65);
   height: 80px;
   display: flex;
   align-items: center;
