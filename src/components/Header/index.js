@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useState} from 'react';
 import {Link} from "react-router-dom";
 import {TMDB} from "../images";
+import SearchBar from "../SearchBar";
 
 
 const Header = () => {
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <header className="header">
             <div className="container header__container">
                 <div className="header__left-side">
-                    <div className="header__logo">
-                        <TMDB viewBox="0 0 300 40" className="header__svg" />
-                    </div>
+                    <Link to="/" className="header__logo">
+                        <TMDB viewBox="0 0 300 40" className="header__svg"/>
+                    </Link>
                     <nav className="header__navbar">
-                        <Link to="/" className="header__link">Фильмы</Link>
+                        <Link to="/films" className="header__link">Фильмы</Link>
                         <Link className="header__link">Сериалы</Link>
                         <Link className="header__link">Люди</Link>
                         <Link className="header__link">Ещё</Link>
                     </nav>
                 </div>
                 <div className="header__right-side">
-                    <i className="fas fa-plus"/>
-                    <i className="fas fa-bell"/>
-                    <i className="fas fa-search"/>
+                    <Link className="header__link"><i className="fas fa-plus"/></Link>
+                    <Link className="header__link"><i className="fas fa-bell"/></Link>
+                    <button className="header__link" style={{transition: ".9s"}} onClick={()=> setIsOpen(true)}><i className="fas fa-search"/></button>
                 </div>
             </div>
+            {isOpen &&   <SearchBar setIsOpen={setIsOpen}/>}
         </header>
     );
 };
