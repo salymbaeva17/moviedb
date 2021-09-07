@@ -12,7 +12,7 @@ const Films = () => {
 
     }, [page])
     return (
-        <div>
+        <>
            <PagePicker page={page} setPage={setPage} />
             <div className="row my-4">
                 {
@@ -27,7 +27,7 @@ const Films = () => {
                     )
                 }
             </div>
-        </div>
+        </>
     );
 };
 
