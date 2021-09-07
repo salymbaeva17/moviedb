@@ -7,22 +7,27 @@ import OwlCarousel from "react-owl-carousel";
 const ActorInfo = () => {
     const params = useParams()
     const [isLoading, setIsLoading] = useState(true)
+    const [filmLoading, setFilmLoading] = useState(true)
     const [actor, setActor] = useState({})
     const [acting, setActing] = useState([])
+
     useEffect(() => {
         axios(`https://api.themoviedb.org/3/person/${params.id}?language=ru&api_key=8bd09535ee32769ac84638efb6c3cfe5`)
             .then(({data}) => {
                 setActor(data)
                 setIsLoading(false)
             })
-        axios(`https://api.themoviedb.org/3/person/${params.id}/movie_credits?language=ru&api_key=8bd09535ee32769ac84638efb6c3cfe5`)
+    }, [params.id])
+    useEffect(() => {
+        axios(`https://api.themoviedb.org/3/person/${params.id}/movie_credits?api_key=8bd09535ee32769ac84638efb6c3cfe5`)
             .then(({data}) => {
                 setActing(data.cast)
+                setFilmLoading(false)
             })
-
     }, [params.id])
+    console.log(new Date().getFullYear())
     const releaseDate = acting.filter(el => el.release_date).sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
-    if (isLoading) {
+    if (isLoading || filmLoading) {
         return <Spinner/>
     }
     return (
@@ -30,38 +35,40 @@ const ActorInfo = () => {
             <div className="col-md-4">
                 <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${actor.profile_path}`} alt={actor.name}/>
                 <h3>Персональная информация</h3>
-                <p>Известность за {actor.known_for_department}</p>
-                <p>Пол {actor.gender === 1 ? "Женский" : actor.gender === 2 ? "Мужской" : "Неизвестно"}</p>
-                <span>Дата рождения {actor.birthday?.split("-").reverse().join(".")}</span>
-                <p>Место рождения {actor.place_of_birth}</p>
+                <p>Известность за: {actor.known_for_department}</p>
+                <p>Пол: {actor.gender === 1 ? "Женский" : actor.gender === 2 ? "Мужской" : "Неизвестно"}</p>
+                <span>Дата рождения: {actor.birthday?.split("-").reverse().join(".")}</span>
+                <p className="max-width">Место рождения: {actor.place_of_birth}</p>
                 {
                     actor.also_known_as &&
                         <>
-                            <h4>Также известность как</h4>
+                            {
+                                actor.gender === 1 ? <h4>Также известна как</h4> :  actor.gender === 2 ? <h4>Также известен как</h4> : <h4>Также известно как</h4>
+                            }
                             {actor.also_known_as?.map((el, idx) =>
                                 <p key={idx}>{el}</p>)
                             }
                         </>
-
                 }
-
             </div>
             <div className="col-md-8">
                 <h1>{actor.name}</h1>
                 <p>Биография<br/>{actor.biography}</p>
                 <h4>Известность за</h4>
-                <OwlCarousel className="d-flex" items={7}>
+                <OwlCarousel className="d-flex" items={6} margin={8} >
                     {
-                        acting.filter(el => el.popularity > 7).map(item =>
-                            <div className="mx-2">
-                                    <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.poster_path}`} alt=""/>
-                                    <p>{item.title}</p>
+                        acting.sort((a, b) => b.vote_count - a.vote_count).map(item =>
+                            <div key={item.id} className="actor__box--2">
+                                <Link className="actor__link" to={`/film/${item.id}`}>
+                                    <img className="actor__image" src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${item.poster_path}`} alt=""/>
+                                    <p className="actor__name">{item.title}</p>
+                                </Link>
                             </div>
-                        )
+                        ).slice(0, 9)
                     }
                  </OwlCarousel>
                 <div>
-                    <h4>Актерское искусство</h4>
+                    <h4 className="mt-4">Актерское искусство</h4>
                     {
                         acting.filter(el => !el.release_date).map(item =>
                             <div key={item.id}>
@@ -72,12 +79,8 @@ const ActorInfo = () => {
                                         <span className="mx-2">как</span>
                                         <span>{item.character}</span>
                                     </>
-
                                 }
-
                             </div>
-
-
                         )
                     }
                     {
