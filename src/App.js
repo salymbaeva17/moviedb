@@ -5,16 +5,18 @@ import ActorInfo from "./views/ActorInfo";
 import FilmsCast from "./views/FilmsCast";
 import Header from "./components/Header";
 import Search from "./views/Search";
+import Home from "./views/Home";
 
 
 function App() {
     return (
         <Router>
             <Header/>
+            <Route exact path="/"><Home /></Route>
             <Route path="/search/:name"><Search/></Route>
             <Route path="/film/:id"><FilmsInfo/></Route>
-            <div className="container my-5 margin-top">
-                <Route exact path="/films"><Films/></Route>
+            <div className="container margin-top">
+                <Route path="/films"><Films/></Route>
                 <Route path="/actor/:id"><ActorInfo/></Route>
                 <Route path="/cast/:id"><FilmsCast/></Route>
             </div>

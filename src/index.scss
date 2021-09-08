@@ -158,10 +158,6 @@ img {
   display: flex;
   align-items: center;
   z-index: 10;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
   transition: top 0.2s linear;
 
   &__container {
@@ -214,6 +210,92 @@ img {
   }
 }
 
+
+.home{
+  position: absolute;
+  width: 100%;
+  top: 135px;
+  right: 0;
+  left: 0;
+  color: white;
+
+  &__backdrop{
+    margin: 0 auto;
+    max-width: 1385px;
+    min-height: 300px;
+    height: calc(100vh / 2.5);
+    max-height: 360px;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: linear-gradient(to right, rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0) 100%);
+    color: #fff;
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+    top: inherit;
+    left: 0;
+    right: 0;
+    background-image: url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/34OGjFEbHj0E3lE2w0iTUVq0CBz.jpg");
+  }
+
+  &__title{
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+  }
+  &__subtitle{
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0 0 50px 0;
+  }
+  &__input{
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    font-size: 1.1em;
+    color: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-family: "Arial", sans-serif;
+    font-style: italic;
+    font-size: 100%;
+    color: #acacac;
+    &::placeholder{
+      border: none !important;
+      outline: none;
+      font-family: Arial, sans-serif;
+      font-style: italic;
+      font-size: 100%;
+      color: #acacac;
+    }
+  }
+  &__search-btn{
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 46px;
+    padding: 10px 26px;
+    border: none;
+    background: linear-gradient(to right, rgba(30,213,169, 1) 0%, rgba(1,180,228, 1) 100%);
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    color: #fff;
+    font-weight: 700;
+    -webkit-appearance: button;
+    cursor: pointer;
+  }
+  &__search-bar{
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
 
 .film {
   &__title {
