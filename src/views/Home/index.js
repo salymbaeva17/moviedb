@@ -6,7 +6,6 @@ const Home = () => {
     const history = useHistory()
     const [inputValue, setInputValue] = useState("")
     const [page, setPage] = useState(1)
-    const [films, setFilms] = useState([])
     const [search, setSearch] = useState({})
     const params = useParams()
     useEffect(() => {
