@@ -10,7 +10,6 @@ const Home = () => {
                     <h1 className="home__title">Добро пожаловать.</h1>
                     <h3 className="home__subtitle">Миллионы фильмов, сериалов и людей. Исследуйте сейчас.</h3>
                  <SearchBar2 />
-
                 </div>
             </div>
         </>

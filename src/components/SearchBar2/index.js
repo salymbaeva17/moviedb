@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router-dom";
 
-const SearchBar2 = ({setIsOpen}) => {
+const SearchBar2 = () => {
     const history = useHistory()
 
     const [inputValue, setInputValue] = useState("")
@@ -11,10 +11,6 @@ const SearchBar2 = ({setIsOpen}) => {
     const handleClick = () => {
         history.push(`/search/${inputValue}`)
         setTimeout(() => setInputValue(""), 1000)
-    }
-    const handleClear = () => {
-
-        setIsOpen(false)
     }
     const enterPress = (e) => {
         if (e.key === "Enter") {
