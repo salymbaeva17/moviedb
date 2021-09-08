@@ -22,13 +22,12 @@ const FilmsCast = () => {
     }
     return (
         <div className="row">
-            <div className="col-md-6">
-                <h3>Актерский состав:</h3>
+            <div className="col-md-6 ">
+                <h3>Актерский состав ({actors.length})</h3>
                 {
                     actors.map(actor =>
-                        <div className="row">
-                            <div className="col-md-4">
-                                <Link to={`/actor/${actor.id}`}>
+                        <Link to={`/actor/${actor.id}`} className="row cast__card w-100">
+                                <div  className="col-md-2 cast__image" >
                                     {actor.profile_path === null || actor.profile_path?.includes("null") ?
                                         actor.gender === 1 || actor.gender === 0 ?
                                             <>
@@ -49,25 +48,23 @@ const FilmsCast = () => {
 
                                         </>
                                     }
-                                </Link>
+                                </div>
+                            <div className="col-md-8 cast__info">
+                                <h5 className="cast__name">{actor.name}</h5>
+                                <span className="cast__character">{actor.character}</span>
                             </div>
-                            <div className="col-md-8">
-                                <h5>{actor.name}</h5>
-                                <span>{actor.character}</span>
-                            </div>
-                        </div>
+                        </Link>
                     )
                 }
             </div>
             <div className="col-md-6">
-                <h3>Съёмочный состав:</h3>
+                <h3>Съёмочный состав ({productionCast.length})</h3>
                 {
                     productionCast.map(person =>
-                        <div key={person.id} className="row">
-                            <Link className="col-md-4" to={`/actor/${person.id}`}>
-                                <div >
+                        <Link to={`/actor/${person.id}`} key={person.id} className="row cast__card">
+                            <div className="col-md-2 cast__image" >
                                     {person.profile_path === null || person.profile_path?.includes("null") ?
-                                        person.gender === 1 || person.gender === 0 ?
+                                        person.gender === 1?
                                             <>
                                                 <img
                                                     src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg"
@@ -86,13 +83,12 @@ const FilmsCast = () => {
 
                                         </>
                                     }
-                                </div>
-                            </Link>
-                            <div className="col-md-8">
-                                <h5>{person.name}</h5>
-                                <span>{person.character}</span>
                             </div>
-                        </div>
+                            <div className="col-md-8 cast__info">
+                                <h5 className="cast__name">{person.name}</h5>
+                                <span className="cast__character">{person.known_for_department}</span>
+                            </div>
+                        </Link>
                     )
                 }
             </div>

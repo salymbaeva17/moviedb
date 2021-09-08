@@ -30,7 +30,6 @@ const FilmsInfo = () => {
         return <Spinner/>
     }
     return (
-
         <div
             style={{backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${film.backdrop_path})`}}
             className="backdrop back">
@@ -66,7 +65,7 @@ const FilmsInfo = () => {
                                 film.production_countries.map(item => item).length > 1 ?
                                     <span className="film__country">Страны:</span> :
                                     film.production_countries.length === 0 ? "" :
-                                    <span className="film__country">Страна:</span>
+                                        <span className="film__country">Страна:</span>
                             } {film.production_countries.map((country, idx) =>
                             <span className="ms-2" key={idx}>{country.name}</span>)
                         }
@@ -75,11 +74,14 @@ const FilmsInfo = () => {
                     </div>
                     <div className="col-md-9 mt-5 pt-3">
                         <Actors setActorsLoading={setActorsLoading}/>
-                        {
-                            trailers.map(el =>
-                                <FilmsTrailer key={el.id} id={el.key}/>
-                            )
-                        }
+                        <div className="my-5">
+                            {
+                                trailers.map(el =>
+                                    <FilmsTrailer key={el.id} id={el.key}/>
+                                )
+                            }
+                        </div>
+
                     </div>
                     <div className="col-md-3 mt-5 pt-3">
                         <h3>Факты</h3>
@@ -98,6 +100,9 @@ const FilmsInfo = () => {
                 </div>
             </div>
         </div>
+
+
+
     )
 
 }

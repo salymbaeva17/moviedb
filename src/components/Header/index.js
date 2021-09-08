@@ -15,15 +15,15 @@ const Header = () => {
                     </Link>
                     <nav className="header__navbar">
                         <Link to="/films" className="header__link">Фильмы</Link>
-                        <Link className="header__link">Сериалы</Link>
-                        <Link className="header__link">Люди</Link>
-                        <Link className="header__link">Ещё</Link>
+                        <Link to="/" className="header__link">Сериалы</Link>
+                        <Link to="/" className="header__link">Люди</Link>
+                        <Link to="/" className="header__link">Ещё</Link>
                     </nav>
                 </div>
                 <div className="header__right-side">
-                    <Link className="header__link"><i className="fas fa-plus"/></Link>
-                    <Link className="header__link"><i className="fas fa-bell"/></Link>
-                    <button className="header__link" style={{transition: ".9s"}} onClick={()=> setIsOpen(true)}><i className="fas fa-search"/></button>
+                    <Link to="/" className="header__link"><i className="fas fa-plus"/></Link>
+                    <Link to="/" className="header__link"><i className="fas fa-bell"/></Link>
+                    <button className="header__link--search" style={{transition: ".9s"}} onClick={()=> setIsOpen(true)}><i className="fas fa-search"/></button>
                 </div>
             </div>
             {isOpen &&   <SearchBar setIsOpen={setIsOpen}/>}

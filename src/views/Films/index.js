@@ -18,12 +18,13 @@ const Films = () => {
                 {
                     films.map(film =>
                         <div key={film.id} className="col-md-2 col-sm-6 mb-3">
-                            <Link to={`/film/${film.id}`} >
-                                <img src={`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${film.poster_path}`} alt={film.title} />
-                                <h5>{film.title}</h5>
-                            </Link>
+                            <div className="film__card">
+                                <Link to={`/film/${film.id}`} >
+                                    <img src={`https://www.themoviedb.org/t/p/w220_and_h330_bestv2${film.poster_path}`} alt={film.title} />
+                                    <h5 className="film__card--title">{film.title}</h5>
+                                </Link>
+                            </div>
                         </div>
-
                     )
                 }
             </div>

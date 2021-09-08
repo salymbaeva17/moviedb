@@ -14,11 +14,24 @@ const Search = () => {
                 setSearch(data)
             })
     }, [page, params.name])
+    let pageButtons = ""
+    if (search.total_pages > 1 && page === 1) {
+        pageButtons = (<button className='page__btn' onClick={() => setPage(page + 1)}><i className="fas fa-arrow-circle-right"/></button>)
+    } else if (search.total_pages > page && page > 1) {
+        pageButtons = (<>
+            <button className='page__btn' onClick={() => setPage(page - 1)}>
+                <i className="fas fa-arrow-circle-left"/></button>
+            <button className='page__btn' onClick={() => setPage(page + 1)}>
+                <i className="fas fa-arrow-circle-right"/></button>
+        </>)
+    } else if (search.total_pages === page && page !== 1) {
+        pageButtons = (<button className='page__btn' onClick={() => setPage(page - 1)}><i className="fas fa-arrow-circle-left"/></button>)
+    }
     return (
         <>
             <div className="container margin-top">
                 <div className="row mt-5">
-                    { search.results?.length ?
+                    {search.results?.length ?
                         <>
                             {
                                 search.results?.map(result =>
@@ -48,8 +61,9 @@ const Search = () => {
                             }
                         </>
 
-                      : <div className="d-flex justify-content-center fs-3">Nothing is found :(</div>
+                        : <div className="d-flex justify-content-center fs-3">Такого фильма нет :(</div>
                     }
+                    <div className="page__btn-box">{pageButtons}</div>
                 </div>
             </div>
         </>

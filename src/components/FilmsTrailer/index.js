@@ -8,7 +8,7 @@ const FilmsTrailer = ({id}) => {
         <span>
             <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={id}
                         onClose={() => setOpen(false)}/>
-            <button className="btn-primary" onClick={() => setOpen(true)}>video</button>
+            <button className="page__btn-info text-white border-0 p-1 me-2 mb-2" onClick={() => setOpen(true)}>video</button>
         </span>
     );
 };
